@@ -692,6 +692,7 @@ void mp_decode_to_lua_type(lua_State *L, mp_cur *c) {
         }
         break;
     case 0xd9:  /* raw 8 */
+    case 0xc4:  /* bin 8 */
         mp_cur_need(c,2);
         {
             size_t l = c->p[1];
@@ -701,6 +702,7 @@ void mp_decode_to_lua_type(lua_State *L, mp_cur *c) {
         }
         break;
     case 0xda:  /* raw 16 */
+    case 0xc5:  /* bin 16 */
         mp_cur_need(c,3);
         {
             size_t l = (c->p[1] << 8) | c->p[2];
@@ -710,6 +712,7 @@ void mp_decode_to_lua_type(lua_State *L, mp_cur *c) {
         }
         break;
     case 0xdb:  /* raw 32 */
+    case 0xc6:  /* bin 36 */
         mp_cur_need(c,5);
         {
             size_t l = ((size_t)c->p[1] << 24) |
